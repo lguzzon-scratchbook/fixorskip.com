@@ -54,6 +54,14 @@ export const Index = () => {
 					>
 						@teodorraul
 					</a>
+					, remastered by{" "}
+					<a
+						href="https://github.com/lguzzon"
+						target="_blank"
+						rel="noopener norefferer"
+					>
+						@lguzzon
+					</a>
 					.
 				</p>
 				{/* <Logo /> */}
