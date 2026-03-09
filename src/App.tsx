@@ -1,10 +1,10 @@
-import { Index } from "./screens";
-import { StateProvider } from "./state/state";
+import {Index} from "./screens"
+import {StateProvider} from "./state/state"
 
 const App = () => (
-	<StateProvider>
-		<Index />
-	</StateProvider>
-);
+  <StateProvider>
+    <Index />
+  </StateProvider>
+)
 
-export default App;
+export default App
