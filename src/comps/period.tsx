@@ -31,22 +31,13 @@ export const Period = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    let totalTimes = 0
-
-    switch (period) {
-      case "daily":
-        totalTimes = times * 365
-        break
-      case "weekly":
-        totalTimes = times * (365 / 7)
-        break
-      case "monthly":
-        totalTimes = times * 12
-        break
-      case "yearly":
-        totalTimes = times
-        break
+    const multipliers: Record<typeof period, number> = {
+      daily: 365,
+      weekly: 365 / 7,
+      monthly: 12,
+      yearly: 1
     }
+    const totalTimes = times * multipliers[period]
 
     dispatch({type: "SET_RECURRENCE", payload: {tasksPerYear: totalTimes}})
   }, [times, period, dispatch])

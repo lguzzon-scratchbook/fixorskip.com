@@ -33,7 +33,8 @@ export const ReferenceDate = () => {
 
   const handleDurationClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      setDuration(e.currentTarget.dataset.period as string)
+      const period = e.currentTarget.dataset.period
+      if (period) setDuration(period)
     },
     []
   )
