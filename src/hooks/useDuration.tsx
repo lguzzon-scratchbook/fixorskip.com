@@ -40,7 +40,7 @@ function splitDuration(duration: string): Array<[number?, string?]> {
   const alpha = duration.match(/[a-zA-Z]+/g)
   const pairs = num?.map((n, i) => [n, alpha?.[i]])
 
-  return (pairs as any) || []
+  return (pairs as Array<[number, string]>) || []
 }
 
 export const useDuration = () => {

@@ -30,7 +30,9 @@ const Reducer = (state: State, action: Action) => {
   }
 }
 
-export const StateProvider: React.FC<any> = ({children}) => {
+export const StateProvider: React.FC<{children: React.ReactNode}> = ({
+  children
+}) => {
   const [state, dispatch] = useReducer(Reducer, {
     tasksPerYear: 0,
     timeSavedPerTask: 0,

@@ -20,7 +20,7 @@ export const ReferenceDate = () => {
   const dispatch = useDispatch()
   const [duration, setDuration] = useState("5 years")
 
-  const handleChange = useCallback((e: any) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const elem = e.target || e.currentTarget
     setDuration(elem.value)
   }, [])
@@ -46,6 +46,8 @@ export const ReferenceDate = () => {
         {periods.map(p => {
           return (
             <button
+              key={p}
+              type="button"
               data-period={p}
               className={PeriodButton({active: p === duration})}
               onClick={handleDurationClick}>

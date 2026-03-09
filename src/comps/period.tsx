@@ -10,7 +10,13 @@ export const Period = () => {
 
   const handlePeriodChange = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      setPeriod(e.currentTarget.dataset.period as any)
+      setPeriod(
+        e.currentTarget.dataset.period as
+          | "daily"
+          | "weekly"
+          | "monthly"
+          | "yearly"
+      )
     },
     []
   )
@@ -54,24 +60,28 @@ export const Period = () => {
       </div>
       <div className={OftenRow}>
         <button
+          type="button"
           onClick={handlePeriodChange}
           className={OftenButton({active: period === "daily"})}
           data-period="daily">
           / day
         </button>
         <button
+          type="button"
           onClick={handlePeriodChange}
           className={OftenButton({active: period === "weekly"})}
           data-period="weekly">
           / week
         </button>
         <button
+          type="button"
           onClick={handlePeriodChange}
           className={OftenButton({active: period === "monthly"})}
           data-period="monthly">
           / month
         </button>
         <button
+          type="button"
           onClick={handlePeriodChange}
           className={OftenButton({active: period === "yearly"})}
           data-period="yearly">

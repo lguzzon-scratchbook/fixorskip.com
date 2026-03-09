@@ -8,7 +8,7 @@ export const Gain = () => {
   const dispatch = useDispatch()
   const [duration, setDuration] = useState("30 minutes")
 
-  const handleChange = useCallback((e: any) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const elem = e.target || e.currentTarget
     setDuration(elem.value)
   }, [])

@@ -8,7 +8,9 @@ export const Logo = () => {
       width="556"
       height="175"
       fill="none"
-      viewBox="0 0 556 175">
+      viewBox="0 0 556 175"
+      aria-labelledby="logo-title">
+      <title id="logo-title">Fix or Skip Logo</title>
       <path
         fill="#000"
         fillRule="evenodd"

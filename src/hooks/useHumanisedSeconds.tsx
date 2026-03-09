@@ -2,36 +2,27 @@ import {useCallback} from "react"
 
 export const useHumanisedSeconds = () => {
   const formatDuration = useCallback((seconds: number) => {
-    let years, months, weeks, days, hours, minutes, remaining_seconds
-
-    // Calculate years
-    years = Math.floor(seconds / 31536000)
+    const years = Math.floor(seconds / 31536000)
     seconds -= years * 31536000
 
-    // Calculate months
-    months = Math.floor(seconds / 2592000)
+    const months = Math.floor(seconds / 2592000)
     seconds -= months * 2592000
 
-    // Calculate weeks
-    weeks = Math.floor(seconds / 604800)
+    const weeks = Math.floor(seconds / 604800)
     seconds -= weeks * 604800
 
-    // Calculate days
-    days = Math.floor(seconds / 86400)
+    const days = Math.floor(seconds / 86400)
     seconds -= days * 86400
 
-    // Calculate hours
-    hours = Math.floor(seconds / 3600)
+    const hours = Math.floor(seconds / 3600)
     seconds -= hours * 3600
 
-    // Calculate minutes
-    minutes = Math.floor(seconds / 60)
+    const minutes = Math.floor(seconds / 60)
     seconds -= minutes * 60
 
-    // Remaining seconds
-    remaining_seconds = Math.floor(seconds)
+    const remaining_seconds = Math.floor(seconds)
 
-    let time = []
+    let time: string[] = []
     if (years > 0) time.push(years + (years > 1 ? " years" : " year"))
     if (months > 0) time.push(months + (months > 1 ? " months" : " month"))
     if (weeks > 0) time.push(weeks + (weeks > 1 ? " weeks" : " week"))
@@ -43,18 +34,9 @@ export const useHumanisedSeconds = () => {
         remaining_seconds + (remaining_seconds > 1 ? " seconds" : " second")
       )
 
-    // Only keep the first 2 units
     time = time.slice(0, 2)
 
-    let output = ""
-    for (let i = 0; i < time.length; i++) {
-      if (i === 0) {
-        output += time[i]
-      } else if (i === time.length - 1) {
-        output += ` and ${time[i]}`
-      }
-    }
-    return output
+    return time.length === 2 ? `${time[0]} and ${time[1]}` : time[0] || ""
   }, [])
 
   return {formatDuration}
