@@ -1,13 +1,16 @@
 {
   "name": "fixorskip",
   "scripts": {
+    "_:prd": "bun run build && bun deploy:prod",
+    "_:prv": "bun run build && bun deploy:preview",
     "_:upd": "bun --bun x --yes npm-check-updates -u",
     "build": "webpack --config webpack.config.js --mode production",
-    "deploy:preview": " bun deploy:preview --preview",
+    "deploy:preview": " bun deploy:prod --preview",
     "deploy:prod": " bunx --node surge dist/ fixorskip.surge.sh",
     "dev": "webpack serve --open",
-    "lint": "bun --bun x --yes @biomejs/biome@latest check --fix --unsafe  --indent-style=space --indent-width=2 --line-width=80 --expand=never --bracket-spacing=false --trailing-commas=none --semicolons=as-needed --arrow-parentheses=as-needed --bracket-same-line=true --javascript-formatter-expand=never --javascript-formatter-bracket-spacing=false --json-formatter-expand=never ./src",
+    "lint": "bun tool:jsort:fix && bun biome:lint",
     "surge:login": "bunx surge login",
+    "tool:biome:lint": "bun --bun x --yes @biomejs/biome@latest check --fix --unsafe  --indent-style=space --indent-width=2 --line-width=80 --expand=never --bracket-spacing=false --trailing-commas=none --semicolons=as-needed --arrow-parentheses=as-needed --bracket-same-line=true --javascript-formatter-expand=never --javascript-formatter-bracket-spacing=false --json-formatter-expand=never ./src",
     "tool:jsort": "bunx --silent json-sort-cli@latest",
     "tool:jsort:fix": "bun --silent tool:jsort package.json biome.json src/ test/ script/ doc/"
   },
